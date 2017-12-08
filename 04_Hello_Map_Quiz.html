@@ -4,24 +4,18 @@ API Course, Lesson 1 -->
 
 <head>
     <!-- styles put here, but you can include a CSS file and reference it instead! -->
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-    <!-- TODO 1: Create a place to put the map in the HTML-->
-    <div></div>
-    <script>
-        var theKey = config.MAP_KEY;
-        // TODO: Create a map variable
-
-        // TODO: Complete the following function to initialize the map
-        function initMap() {
-            // TODO: use a constructor to create a new map JS object. You can use the coordinates
-            // we used, 40.7413549, -73.99802439999996 or your own!
-        }
-    </script>
-    <!--TODO: Load the JS API ASYNCHRONOUSLY below.-->
-    <script>
+    <div>
+        <h2>Its A Map!</h2>
+    </div>
+    <div id="map"></div>
+    <script src="js/map.js" charset="utf-8"></script>
+    <script
+        async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPnbAKZIM7ZRYxqYoGu-PCUoV5XWxKg5Q&v=3&callback=initMap">
     </script>
 </body>
 
