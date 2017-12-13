@@ -219,6 +219,9 @@ function initMap() {
         polygon.setEditable(true);
         // Searching within the polygon.
         searchWithinPolygon();
+        //Calculate are of polgon.
+        area = google.maps.geometry.spherical.computeArea(polygon.getPath());
+        alert("Hi, this area is: "+area);
         // Make sure the search is re-done if the poly is changed.
         polygon.getPath().addListener('set_at', searchWithinPolygon);
         polygon.getPath().addListener('insert_at', searchWithinPolygon);
