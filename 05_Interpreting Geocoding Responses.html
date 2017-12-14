@@ -29,6 +29,8 @@ and Google's Maps API Course, Lesson 2 -->
         font-family: 'Roboto','sans-serif';
         line-height: 30px;
         padding-left: 10px;
+        max-width: 250px;
+        max-height: 350px;
       }
     </style>
   </head>
@@ -60,8 +62,11 @@ and Google's Maps API Course, Lesson 2 -->
           if (status === google.maps.GeocoderStatus.OK) {
             resultsMap.setCenter(results[0].geometry.location);
             //TODO: Insert code here to take the first result's formatted address, and LOCATION.
-            document.getElementById('firstComponent').innerHTML="The Formatted Address is:"; // PUT STUFF HERE
-            document.getElementById('secondComponent').innerHTML="The Location is"; // PUT STUFF HERE
+            formatted = results[0].formatted_address;
+            local_lat = results[0].geometry.location.lat;
+            local_lng = results[0].geometry.location.lng;
+            document.getElementById('firstComponent').innerHTML="The Formatted Address is: <p>"+formatted+"</p>";
+            document.getElementById('secondComponent').innerHTML="The Location is: <p>Latitude: "+local_lat()+"</p><p>Longitude: "+local_lng()+"</p>";
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
@@ -70,7 +75,7 @@ and Google's Maps API Course, Lesson 2 -->
     </script>
     <!--TODO: Insert your API Key in the below call to load the API.-->
     <script async defer
-     src="https://maps.googleapis.com/maps/api/js?v=3&key=XXX&callback=initMap">
+     src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDPnbAKZIM7ZRYxqYoGu-PCUoV5XWxKg5Q&callback=initMap">
     </script>
   </body>
 </html>
