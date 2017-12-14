@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="origin"></div>
+    <div id="destination"></div>
+    <div id="distance"></div>
+    <div id="duration"></div>
+</body>
+<script type="text/javascript">
+    function initMap() {
+        var distanceMatrixService = new google.maps.DistanceMatrixService;
+        distanceMatrixService.getDistanceMatrix({
+            origins: ["4800 El Camino Real, Los Altos, CA"],
+            destinations: ["2465 Lathem Street, Mountain View, CA"],
+            travelMode: google.maps.TravelMode.BICYCLING,
+            unitSystem: google.maps.UnitSystem.IMPERIAL
+        }, function(response, status) {
+            if (status !== google.maps.DistanceMatrixStatus.OK) {
+                window.alert('Error was: ' + status);
+            } else {
+                displayData(response);
+            }
+        });
+
+    }
+    function displayData(response){
+        var origins = response.originAddresses;
+        var destinations = response.destinationAddresses;
+        var distance = response.rows[0].elements[0].distance.text;
+        var duration = response.rows[0].elements[0].duration.text;
+        document.getElementById('origin').innerHTML="The origin is: <p>"+origins+"</p>";
+        document.getElementById('destination').innerHTML="The destination is: <p>"+destinations+"</p>";
+        document.getElementById('distance').innerHTML="The destination is: <p>"+distance+"</p>";
+        document.getElementById('duration').innerHTML="The destination is: <p>"+duration+"</p>";
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDPnbAKZIM7ZRYxqYoGu-PCUoV5XWxKg5Q&callback=initMap">
+</script>
+
+</html>
